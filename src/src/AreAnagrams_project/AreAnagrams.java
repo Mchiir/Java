@@ -8,6 +8,8 @@ public class AreAnagrams {
         setText1(text1);
         setText2(text2);
 
+        if(text1.isEmpty() || text2.isEmpty())
+            System.out.println("Please the text's length must be greater than 0");
         AnagramCheck(text1, text2);
     }
 
@@ -32,14 +34,10 @@ public class AreAnagrams {
     }
 
     private void setText1(String text1) {
-        if (text1.length() == 0)
-            throw new IllegalArgumentException("Text1 is empty");
         this.text1 = text1;
     }
 
     private void setText2(String text2) {
-        if (text2.length() == 0)
-            throw new IllegalArgumentException("Text2 is empty");
         this.text2 = text2;
     }
 }
