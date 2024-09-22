@@ -1,5 +1,7 @@
 package AreAnagrams_project;
 
+import java.util.Arrays;
+
 public class AreAnagrams {
     private String text1 = "";
     private String text2 = "";
@@ -16,17 +18,19 @@ public class AreAnagrams {
     private void AnagramCheck(String text1, String text2) {
         String result = "";
         if ((text1.length() == text2.length())){
-            for (int i = 0; i < text1.length(); i++){
-                for (int j = 0; j < text2.length(); j++){
-                    if (text1.charAt(i) == text2.charAt(j)){
-                        result = "Anagrams passed";
-                        break;
-                    }else{
-                        result = "Anagrams not passed";
-                    }
-                }
+           char[] text11 = text1.toCharArray();
+           char[] text22 = text2.toCharArray();
+
+            Arrays.sort(text11);
+            Arrays.sort(text22);
+
+            if(Arrays.equals(text11, text22)){
+                result = "Anagrams passed!";
+                System.out.println(result);
+            } else {
+                result = "Anagrams not passed!";
+                System.out.println(result);
             }
-            System.out.println(result);
         }else {
             result = "Text's length does not match";
             System.out.println(result);
