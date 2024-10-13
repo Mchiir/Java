@@ -2,14 +2,12 @@ package Queue_reversing;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.ArrayDeque;
 
 public class ReverseQueue {
     private Queue<Integer> queue;
 
     public ReverseQueue(Queue<Integer> queue) {
         setQueue(queue);
-
         reverseQueue(queue);
     }
 
