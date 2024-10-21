@@ -12,9 +12,12 @@ public class Factorial {
         if (n > 20){
             System.out.println("The number is too large!, pass a number less than or equal to 20.");
             return 0;
-        }
-            if ((n == 1) || (n == 0))
-                return 1;
+        }else if (n < 0){
+            System.out.println("There's no factorial for negative numbers!, please provide positive numbers.");
+            return 0;
+        }else if (n == 0)
+            return 1;
+        else
             return n * fact(n-1);
     }
 }
