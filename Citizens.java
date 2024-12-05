@@ -1,4 +1,4 @@
-package app.oop.Citizenship;
+package app.oop.NatioSense;
 
 import java.util.List;
 import java.util.ArrayList;

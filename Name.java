@@ -1,4 +1,4 @@
-package app.oop.Citizenship;
+package app.oop.NatioSense;
 
 @FunctionalInterface
 public interface Name {
