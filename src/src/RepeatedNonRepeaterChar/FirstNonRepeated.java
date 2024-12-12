@@ -1,4 +1,4 @@
-package Char_frequency;
+package RepeatedNonRepeaterChar;
 
 import java.util.HashMap;
 import java.util.Map;
