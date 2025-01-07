@@ -1,64 +1,45 @@
 package kth_largest_element;
 
 public class MaxHeap extends Heap {
-
-    public MaxHeap(int capacity) {
-        super(capacity);
+    private static void heapify(int[] array) {
+        for (int i = (array.length / 2) - 1; i >= 0; i--)
+            heapify(array, i, array.length);
     }
 
-    public void insert(int val) {
-        if (size == capacity) {
-            throw new IllegalStateException("Heap is full");
-        }
+    private static void heapify(int[] array, int index, int size) {
+        int largest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
 
-        heap[size] = val;
-        size++;
-        int i = size - 1;
-        // Bubble up the new element to restore heap property
-        while (i != 0 && heap[parent(i)] < heap[i]) {
-            swap(i, parent(i));
-            i = parent(i);
-        }
-    }
-
-    public int extractMax() {
-        if (size == 0) {
-            throw new IllegalStateException("Heap is empty");
-        }
-        int root = heap[0];
-        heap[0] = heap[size - 1];
-        size--;
-        heapify(0);
-        return root;
-    }
-
-    @Override
-    public void heapify(int i) {
-        int left = leftChild(i);
-        int right = rightChild(i);
-        int largest = i;
-
-        if (left < size && heap[left] > heap[largest]) {
+        if (left < size && array[left] > array[largest])
             largest = left;
-        }
-        if (right < size && heap[right] > heap[largest]) {
+
+        if (right < size && array[right] > array[largest])
             largest = right;
+
+        if (largest != index) {
+            swap(array, index, largest);
+            heapify(array, largest, size);
         }
-        if (largest != i) {
-            swap(i, largest);
-            heapify(largest);
-        }
     }
 
-    private int parent(int i) {
-        return (i - 1) / 2;
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
-    private int leftChild(int i) {
-        return 2 * i + 1;
-    }
+    public static int getKthLargest(int[] array, int k) {
+        if (k > array.length || k < 1)
+            throw new IllegalArgumentException();
 
-    private int rightChild(int i) {
-        return 2 * i + 2;
+        var heap = new Heap();
+        for (var number : array)
+            heap.insert(number);
+
+        for (var i = 0; i < k - 1; i++)
+            heap.remove();
+
+        return heap.max();
     }
 }
