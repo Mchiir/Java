@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mariadb:
+    container_name: guide-mariadb
+    image: mariadb:latest
+    environment:
+      - MARIADB_DATABASE=db01
+      - MARIADB_USER=guest
+      - MARIADB_PASSWORD=guest
+      - MARIADB_ROOT_PASSWORD=4356
+    ports:
+      - "3030:3306"
+    networks:
+      - testdocker-network
+
+  app:
+    container_name: testdocker
+    build: .
+    ports:
+      - "8001:8001"
+    depends_on:
+      - mariadb
+    networks:
+      - testdocker-network
+
+networks:
+  testdocker-network:
+    driver: bridge
