@@ -1,0 +1,20 @@
+docker build -t testdocker-app .
+docker run -d --name app testdocker-app
+docker logs -f app # The output of the program is in a log in console
+docker start app
+
+
+Other commands
+docker ps -a
+docker ps
+docker login -u username
+docker logs -f container_name
+docker start cont_name
+docker stop cont_name
+docker rm cont_name
+docker rm -f cont_name
+docker exet -it guide-mariadb sh
+
+
+For applications running on specific ports:
+docker run -d -p 8080:8080 --name app testdocker-app
