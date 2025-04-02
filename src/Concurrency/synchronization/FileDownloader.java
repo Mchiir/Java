@@ -1,7 +1,5 @@
 package Concurrency.synchronization;
 
-import Concurrency.DownloadStatus;
-
 public class FileDownloader implements Runnable {
     private final DownloadStatus status;
 
@@ -11,14 +9,8 @@ public class FileDownloader implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Downloading file: "+ Thread.currentThread().getName());
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        for(int i=0; i<10_000; i++) {
+            status.incrementStatus();
         }
-
-        System.out.println("Download complete. Current slept thread"+ Thread.currentThread().getName());
     }
 }
