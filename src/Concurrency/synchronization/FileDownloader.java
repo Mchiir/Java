@@ -1,9 +1,9 @@
 package Concurrency.synchronization;
 
 public class FileDownloader implements Runnable {
-    private final DownloadStatus status;
+    private final IsDownloadStatus status;
 
-    public FileDownloader(DownloadStatus status) {
+    public FileDownloader(IsDownloadStatus status) {
         this.status = status;
     }
 

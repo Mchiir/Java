@@ -4,11 +4,11 @@ package Concurrency.synchronization;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class DownloadStatus {
+public class DownloadStatus implements IsDownloadStatus {
     private int status;
     private Lock lock = new ReentrantLock();
 
-    public int getTotalBytes(){
+    public Number getTotalBytes(){
         return status;
     }
 
@@ -21,3 +21,4 @@ public class DownloadStatus {
         }
     }
 }
+

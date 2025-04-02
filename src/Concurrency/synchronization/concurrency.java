@@ -1,10 +1,26 @@
 package Concurrency.synchronization;
 
-import java.util.ArrayList;
-
 public class Concurrency {
     public static void main(String[] args) {
-        var downloadStatus = new DownloadStatus();
+        useVolatile(); // to prevent "visilibity issues"
+        synchronization();// to prevent "race conditions"
+    }
+
+    public static void useVolatile(){
+        var status = new DownloadStatus3();
+        var thread1 = new Thread(new FileDownloader2(status));
+        var thread2 = new Thread(()->{
+            while(!status.isDone()){}
+
+            System.out.println(status.getTotalBytes());
+        });
+
+        thread1.start();
+        thread2.start();
+    }
+
+    public static void synchronization(){
+        IsDownloadStatus downloadStatus = new DownloadStatus2();
         var fileDownloader = new FileDownloader(downloadStatus);
 
         Thread[] threads = new Thread[10];
