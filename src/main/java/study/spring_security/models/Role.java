@@ -2,18 +2,23 @@ package study.spring_security.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    public void setName(String name) {
+            this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
 }
