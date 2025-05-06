@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/")
-public class SimpleController {
+public class JWTTestController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")

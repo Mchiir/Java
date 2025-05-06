@@ -2,12 +2,10 @@ package study.spring_security.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Data
 public class UserResDTO implements Serializable {
     @NotBlank
     private String username;

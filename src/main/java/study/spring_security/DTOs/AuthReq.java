@@ -1,9 +1,7 @@
 package study.spring_security.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
 public class AuthReq {
     @NotBlank
     private String email;

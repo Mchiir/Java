@@ -31,34 +31,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResDTO register(UserReqDTO userReqDTO) {
-        if (userRepository.existsByUsername(userReqDTO.getUsername())) {
-            throw new RuntimeException("Username already exists");
-        }
-
-        if (userRepository.existsByEmail(userReqDTO.getEmail())) {
-            throw new RuntimeException("Email already in use");
-        }
-
-        var role = new Role();
-        role.setName("ROLE_USER");
-
-        var newUser = new User(
-                userReqDTO.getUsername(),
-                passwordEncoder.encode(userReqDTO.getPassword()),
-                userReqDTO.getEmail(),
-                List.of(role)
-        );
-
-        try {
-            User savedUser = userRepository.save(newUser);
-            return modelMapper.map(savedUser, UserResDTO.class);
-        } catch (DataIntegrityViolationException ex) {
-            throw new RuntimeException("Database error: " + ex.getMostSpecificCause().getMessage());
-        }
-    }
-
-    @Override
     public List<UserResDTO> getAllUsers() {
         return ((List<User>) userRepository.findAll()).stream()
                 .map(user -> modelMapper.map(user, UserResDTO.class))

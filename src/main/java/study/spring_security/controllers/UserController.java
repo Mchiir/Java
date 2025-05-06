@@ -20,17 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Register User
-    @PostMapping("/registerUser")
-    public ResponseEntity<?> register(@Valid @RequestBody UserReqDTO userReqDTO) {
-        try {
-            UserResDTO registeredUser = userService.register(userReqDTO);
-            return ResponseEntity.status(HttpStatus.CREATED).body(registeredUser);
-        } catch (RuntimeException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
-    }
-
     // Get All Users
     @GetMapping
     public ResponseEntity<List<UserResDTO>> getAllUsers() {
