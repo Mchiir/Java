@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,8 +18,9 @@ import study.spring_security.context.JwtAuthenticationEntryPoint;
 import study.spring_security.context.JwtAuthenticationFilter;
 import study.spring_security.repo.UserRepository;
 
-@Configuration
-@EnableWebSecurity
+@Configuration // to indicate a spring sec conf class
+@EnableWebSecurity // to use below sec customization
+@EnableMethodSecurity // required for method's security anotations
 public class SecurityConfig {
 
     private final UserRepository userRepository;
@@ -46,7 +48,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/api/auth/**", "/h2_console/**").permitAll();
+                    authorize.requestMatchers("/api/auth/**", "/h2_console/**", "/").permitAll();
                     authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     authorize.anyRequest().authenticated();
                 }).httpBasic(Customizer.withDefaults());
