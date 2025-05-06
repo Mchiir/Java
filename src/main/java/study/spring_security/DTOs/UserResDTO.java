@@ -1,4 +1,4 @@
-package study.spring_security.DTO;
+package study.spring_security.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

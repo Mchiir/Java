@@ -1,4 +1,4 @@
-package study.spring_security.cont;
+package study.spring_security.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

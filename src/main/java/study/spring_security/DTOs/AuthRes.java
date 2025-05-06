@@ -1,4 +1,4 @@
-package study.spring_security.DTO;
+package study.spring_security.DTOs;
 
 import java.io.Serializable;
 

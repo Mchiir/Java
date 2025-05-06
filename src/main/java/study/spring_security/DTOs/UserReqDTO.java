@@ -1,14 +1,22 @@
-package study.spring_security.DTO;
+package study.spring_security.DTOs;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
-public class AuthReq {
+public class UserReqDTO {
     @NotBlank
-    private String email;
+    private String username;
     @NotBlank
     private String password;
+    @NotBlank
+    private String email;
+
+    public @NotBlank String getUsername() {
+        return username;
+    }
+
+    public void setUsername(@NotBlank String username) {
+        this.username = username;
+    }
 
     public @NotBlank String getPassword() {
         return password;

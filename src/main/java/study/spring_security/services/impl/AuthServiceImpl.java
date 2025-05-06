@@ -1,10 +1,11 @@
-package study.spring_security.interfaces;
+package study.spring_security.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import jwtSecurity.example.jwtDemo.Config.JwtTokenProvider;
+import study.spring_security.services.AuthService;
 
 @Service
 public class AuthServiceImpl implements AuthService {
